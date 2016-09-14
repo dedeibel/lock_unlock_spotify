@@ -1,0 +1,10 @@
+#!/bin/bash
+export DISPLAY=:0
+# Check the title in the window list to work out if it's playing
+TITLE=$(wmctrl -l | grep -o -e "Spotify.*$" | sort -r | tail -n 1)
+# If it's playing pause it
+if [[ "$TITLE" != "Spotify" ]]; then
+  ~/bin/spotify-pause
+fi
+# kde
+qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
